@@ -1,0 +1,8 @@
+<p><%= @blog.content %>
+
+<form method="post" action="/blogs/<%=@blog.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Blog Entry">
+</form>
+
+<a href="/blogs/<%=@blog.id%>/edit">Edit Blog Entry </a>

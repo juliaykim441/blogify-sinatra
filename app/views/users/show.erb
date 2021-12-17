@@ -1,0 +1,6 @@
+<p> Your blogs, <%= @user.username %>
+<% @user.blogs.each do |blog| %>
+  <div>
+    <%= blog.content %>
+  </div>
+<% end %>

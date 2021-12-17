@@ -1,0 +1,8 @@
+<p> Welcome, <%= current_user.username %>
+<h2> Blogs </h2>
+
+<% @blogs.each do |blog| %>
+    <div>
+        <%= blog.content %>
+    </div>
+<% end %>

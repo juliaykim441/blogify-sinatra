@@ -3,20 +3,21 @@ class UsersController < ApplicationController
         @user = User.find_by_slug(params[:slug])
         erb :'users/show'
     end
+end
 
-    get '/signup' do 
-        if !logged_in? 
-            erb :'users/create_user', locals: {message: "Looks like you are not registerd with us. Please sign up before you sign in!"}
-        else 
-            redirect to '/blogs'
-        end
-    end
+    # get '/signup' do 
+    #     if !logged_in? 
+    #         erb :'users/create_user', locals: {message: "Looks like you are not registerd with us. Please sign up before you sign in!"}
+    #     else 
+    #         redirect to '/blogs'
+    #     end
+    # end
 
     # post '/signup' do
     #     if params[:username] == "" || params[:email] == "" || params[:password] == ""
     #       redirect to '/signup'
     #     else
-    #       @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+    #       @user = User.new(username: params[:username], email: params[:email], password: params[:password])
     #       @user.save
     #       session[:user_id] = @user.id
     #       redirect to '/blogs'
@@ -49,5 +50,3 @@ class UsersController < ApplicationController
     #         redirect to '/'
     #     end
     # end
-
-end

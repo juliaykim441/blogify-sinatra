@@ -1,4 +1,4 @@
-<p> Welcome, <%= current_user.username %>
+<p> Welcome, <%= current_user.username %><br>
 <h2> Blogs </h2>
 
 <% @blogs.each do |blog| %>
@@ -6,3 +6,7 @@
         <%= blog.content %>
     </div>
 <% end %>
+
+<a href="/logout"> Log Out </a><br>
+<a href="/"> Home </a>
+

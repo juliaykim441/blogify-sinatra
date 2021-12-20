@@ -7,4 +7,6 @@ end
 use Rack::MethodOverride
 use BlogsController
 use UsersController
+use RegistrationsController
+use SessionsController
 run ApplicationController

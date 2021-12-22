@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
     get '/blogs' do 
         if logged_in? 
-            @blogs = Blog.all 
+            @blogs = current_user.blogs
             erb :'blogs/blogs'
         else
             redirect to '/sessions/login'
@@ -21,7 +21,7 @@ class BlogsController < ApplicationController
             if params[:content] == ""
                 redirect to "/blogs/new"
             else 
-                @blog = current_user.blogs.build(content: params[:content])
+                @blog = current_user.blogs.build(content: params[:content], title: params[:title])
                 if @blog.save
                     redirect to "/blogs/#{@blog.id}"
                 else
@@ -35,7 +35,7 @@ class BlogsController < ApplicationController
 
     get '/blogs/:id' do
         if logged_in?
-          @blog = Blog.find_by_id(params[:id])
+          @blog = current_user.blogs.find_by_id(params[:id])
           erb :'blogs/show_blog'
         else
           redirect to '/sessions/login'
@@ -61,9 +61,9 @@ class BlogsController < ApplicationController
             if params[:content] == ""
                 redirect to "/blogs/#{params[:id]}/edit"
             else 
-                @blog = Blog.find_by(params[:id])
+                @blog = current_user.blogs.find_by(params[:id])
                 if @blog && @blog.user == current_user
-                    if @blog.update(content: params[:content])
+                    if @blog.update(content: params[:content], title: params[:title])
                         redirect to "/blogs/#{@blog.id}"
                     else 
                         redirect to "/blogs/#{@blog.id}/edit"

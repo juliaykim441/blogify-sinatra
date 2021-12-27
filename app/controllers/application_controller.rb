@@ -63,7 +63,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/users/show' do
-
     @user = User.find(session[:user_id])
     erb :'/users/show'
   end
